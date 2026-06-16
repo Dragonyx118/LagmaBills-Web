@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L.A.G.M.A. B.I.L.L.S. - Botanica & Sorveglianza Intelligente</title>
+    <title>LagmaBills - Soccorso & sorveglianza Intelligente</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="resources/videos/" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
 
@@ -14,15 +21,29 @@
         <a href="index.html" class="logo">LAGMABILLS</a>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-link active">Home</a></li>
-            <li><a href="features.html" class="nav-link">Caratteristiche</a></li>
+            <li><a href="Team.html" class="nav-link">Team</a></li>
+            <li><a href="features.html" class="nav-link">Features</a></li>
+            <li><a href="nova.html" class="nav-link">Nova</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="download.html" class="cta-button">Download</a></li>
         </ul>
     </nav>
 
-    <div class="container">
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="Team.html">Team</a>
+        <a href="features.html">Features</a>
+        <a href="nova.html">Nova</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="download.html" class="cta-button">Download</a>
+    </div>
+
+    <div class="main">
         <section class="hero">
-            <span class="badge">Arduino Day Project</span>
-            <h1>L.A.G.M.A. B.I.L.L.S.</h1>
+            <span class="badge">Skibidi sigma project</span>
+            <h1>LagmaBills</h1>
             <p class="subtitle">Land And Ground-to-Midair Agent — Built for Intelligent Linked Local Support</p>
             <p>Un ecosistema robotico avanzato su ruote Mecanum, progettato per scenari di protezione civile, perlustrazione e monitoraggio ambientale autonomo.</p>
             <div class="hero-buttons">
@@ -31,9 +52,9 @@
             </div>
         </section>
 
-        <section class="card overview-section">
+        <section class="stats-section">
             <h2>Cos'è LAGMABILLS?</h2>
-            <p>Sviluppato come progetto d'eccellenza scolastico di quarta superiore (indirizzo Informatica), LAGMABILLS ridefinisce la perlustrazione ambientale combinando la flessibilità di un robot terrestre con la visione zenitale di un drone companion aereo.</p>
+            <p>Sviluppato , LAGMABILLS ridefinisce la perlustrazione ambientale combinando la flessibilità di un robot terrestre con la visione zenitale di un drone companion aereo.</p>
             <div class="grid-3">
                 <div class="stat-box">
                     <h3>Mecanum Drive</h3>
@@ -63,7 +84,31 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 L.A.G.M.A. B.I.L.L.S. Sviluppato con passione. <a href="https://github.com/Dragonyx118/LagmaBills" target="_blank">GitHub Progetto</a> | <a href="https://github.com/Dragonyx118/LagmaBills-Web" target="_blank">GitHub Sito</a></p>
+        <div class="footer-inner">
+            <div class="footer-logo">LagmaBills</div>
+            <div class="footer-links">
+                <a href="features.html">Features</a>
+                <a href="team.html">Team</a>
+                <a href="contact.html">Contatti</a>
+                <a href="download.html">Download</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 SegmaSirra. Tutti i diritti non riservati i guess?</p>
+        </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+    </script>
+    <script src="cursor.js"></script>
 </body>
 </html>
