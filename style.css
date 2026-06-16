@@ -4,10 +4,10 @@
    VARIABLES & RESET
    ===================== */
 :root {
-    --teal: #0728ac;
-    --green: #2a7ebf;
-    --teal-light: #0e08bf;
-    --green-light: #3cc9d6;
+    --teal: #0d6efd; /* Cambiato in Blu Elettrico */
+    --green: #0a58ca; /* Cambiato in Blu Scuro */
+    --teal-light: #3a86ff; /* Cambiato in Blu Vivo */
+    --green-light: #00b4d8; /* Cambiato in Cyan/Azzurro */
 
     /* Glass - tendono al bianco/nuvola */
     --glass:          rgba(255,255,255,0.55);
@@ -16,16 +16,16 @@
     --glass-shadow:   rgba(0,0,0,0.08);
 
     /* Testo su sfondo chiaro */
-    --text:           #1a2a1a;
-    --text-muted:     rgba(30,50,30,0.6);
-    --text-light:     rgba(30,50,30,0.45);
+    --text:           #0f172a; /* Slate scuro per un contrasto migliore sul blu */
+    --text-muted:     rgba(15,23,42,0.6);
+    --text-light:     rgba(15,23,42,0.45);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #d8efd8;
+    background: #e0f2fe; /* Sfondo virato su un azzurro chiarissimo e morbido */
     color: var(--text);
     overflow-x: hidden;
     cursor: none;
@@ -66,7 +66,7 @@ body {
 body.cursor-hover .cursor-ring {
     width: 56px; height: 56px;
     border-color: var(--green-light);
-    background: rgba(154, 214, 60, 0.10);
+    background: rgba(0, 180, 216, 0.10);
 }
 
 body.cursor-hover .cursor-dot {
@@ -76,7 +76,7 @@ body.cursor-hover .cursor-dot {
 
 body.cursor-click .cursor-ring {
     width: 24px; height: 24px;
-    background: rgba(8,187,191,0.18);
+    background: rgba(58,134,255,0.18);
 }
 
 @media (hover: none) {
@@ -211,12 +211,12 @@ nav:hover { background: rgba(255,255,255,0.75); }
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     white-space: nowrap;
-    box-shadow: 0 2px 12px rgba(8,187,191,0.25);
+    box-shadow: 0 2px 12px rgba(58,134,255,0.25);
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(8,187,191,0.35);
+    box-shadow: 0 8px 20px rgba(58,134,255,0.35);
 }
 
 /* Hamburger */
@@ -402,12 +402,12 @@ nav:hover { background: rgba(255,255,255,0.75); }
     font-weight: 600;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(8,187,191,0.3);
+    box-shadow: 0 4px 20px rgba(58,134,255,0.3);
 }
 
 .cta-button-hero:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(8,187,191,0.4);
+    box-shadow: 0 12px 30px rgba(58,134,255,0.4);
 }
 
 .ghost-button {
@@ -424,7 +424,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
 }
 
 .ghost-button:hover {
-    border-color: rgba(8,187,191,0.5);
+    border-color: rgba(58,134,255,0.5);
     color: var(--teal);
     background: rgba(255,255,255,0.7);
 }
@@ -519,7 +519,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
 .feature-card:hover {
     transform: translateY(-8px);
     background: rgba(255,255,255,0.82);
-    box-shadow: 0 20px 50px rgba(8,187,191,0.15), 0 1px 0 #fff inset;
+    box-shadow: 0 20px 50px rgba(58,134,255,0.15), 0 1px 0 #fff inset;
 }
 
 .feature-icon { font-size: 36px; }
@@ -563,7 +563,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
     max-width: 700px;
     width: 100%;
     backdrop-filter: blur(24px);
-    box-shadow: 0 8px 40px rgba(8,187,191,0.10), 0 1px 0 #fff inset;
+    box-shadow: 0 8px 40px rgba(58,134,255,0.10), 0 1px 0 #fff inset;
 }
 
 .cta-inner h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; margin-bottom: 16px; color: var(--text); }
@@ -643,13 +643,13 @@ nav:hover { background: rgba(255,255,255,0.75); }
 .team-card:hover {
     transform: translateY(-10px);
     background: rgba(255,255,255,0.82);
-    box-shadow: 0 24px 60px rgba(8,187,191,0.15), 0 1px 0 #fff inset;
+    box-shadow: 0 24px 60px rgba(58,134,255,0.15), 0 1px 0 #fff inset;
 }
 
 .team-card--center {
     transform: scale(1.03);
-    border-color: rgba(8,187,191,0.3);
-    box-shadow: 0 8px 30px rgba(8,187,191,0.12), 0 1px 0 #fff inset;
+    border-color: rgba(58,134,255,0.3);
+    box-shadow: 0 8px 30px rgba(58,134,255,0.12), 0 1px 0 #fff inset;
 }
 
 .team-card--center:hover { transform: scale(1.03) translateY(-10px); }
@@ -659,7 +659,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
     top: -60px; right: -60px;
     width: 180px; height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(8,187,191,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(58,134,255,0.08) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -705,8 +705,8 @@ nav:hover { background: rgba(255,255,255,0.75); }
 .team-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
 
 .tag {
-    background: rgba(8,187,191,0.1);
-    border: 1px solid rgba(8,187,191,0.3);
+    background: rgba(58,134,255,0.1);
+    border: 1px solid rgba(58,134,255,0.3);
     color: var(--teal);
     padding: 4px 12px;
     border-radius: 20px;
@@ -746,7 +746,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
 
 .feature-detail-card:hover {
     background: rgba(255,255,255,0.78);
-    box-shadow: 0 10px 40px rgba(8,187,191,0.12), 0 1px 0 #fff inset;
+    box-shadow: 0 10px 40px rgba(58,134,255,0.12), 0 1px 0 #fff inset;
 }
 
 .feature-detail-card--reverse { grid-template-columns: 1fr 80px; }
@@ -838,8 +838,8 @@ nav:hover { background: rgba(255,255,255,0.75); }
 
 .form-input::placeholder, .form-textarea::placeholder { color: var(--text-light); }
 .form-input:focus, .form-textarea:focus {
-    border-color: rgba(8,187,191,0.5);
-    box-shadow: 0 0 0 3px rgba(8,187,191,0.1);
+    border-color: rgba(58,134,255,0.5);
+    box-shadow: 0 0 0 3px rgba(58,134,255,0.1);
 }
 .form-textarea { resize: vertical; min-height: 120px; }
 
@@ -854,12 +854,12 @@ nav:hover { background: rgba(255,255,255,0.75); }
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     font-family: inherit;
-    box-shadow: 0 4px 20px rgba(8,187,191,0.25);
+    box-shadow: 0 4px 20px rgba(58,134,255,0.25);
 }
 
 .form-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(8,187,191,0.4);
+    box-shadow: 0 8px 25px rgba(58,134,255,0.4);
 }
 
 /* =====================
@@ -896,8 +896,8 @@ nav:hover { background: rgba(255,255,255,0.75); }
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(8,187,191,0.5); }
-    50% { box-shadow: 0 0 0 6px rgba(8,187,191,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(58,134,255,0.5); }
+    50% { box-shadow: 0 0 0 6px rgba(58,134,255,0); }
 }
 
 .download-buttons-section {
@@ -935,7 +935,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
 
 .download-card--available:hover {
     background: rgba(255,255,255,0.82);
-    box-shadow: 0 20px 60px rgba(8,187,191,0.15), 0 1px 0 #fff inset;
+    box-shadow: 0 20px 60px rgba(58,134,255,0.15), 0 1px 0 #fff inset;
     transform: translateY(-6px);
 }
 
@@ -959,12 +959,12 @@ nav:hover { background: rgba(255,255,255,0.75); }
     color: #fff;
     transition: transform 0.2s, box-shadow 0.2s;
     background: linear-gradient(135deg, var(--teal-light), var(--green-light));
-    box-shadow: 0 4px 16px rgba(8,187,191,0.25);
+    box-shadow: 0 4px 16px rgba(58,134,255,0.25);
 }
 
 .download-btn:hover:not(.disabled) {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(8,187,191,0.4);
+    box-shadow: 0 12px 30px rgba(58,134,255,0.4);
 }
 
 .download-btn.disabled {

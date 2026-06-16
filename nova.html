@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova AI — LagmaBills</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="resources/icons/SogmaLigo/noLogo.png">
+<script src="cursor.js" defer></script>
+<style>
+.pipeline {
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-top:40px;
+  position:relative;
+}
+.pipeline::before {
+  content:'';
+  position:absolute;
+  left:28px;
+  top:44px;
+  bottom:44px;
+  width:2px;
+  background:linear-gradient(to bottom, var(--blue), var(--accent2));
+  opacity:.4;
+}
+.pipe-step {
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  padding:20px 0;
+  position:relative;
+}
+.pipe-num {
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:rgba(14,165,233,.12);
+  border:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--mono);
+  font-size:18px;
+  color:var(--blue);
+  flex-shrink:0;
+  position:relative;
+  z-index:1;
+}
+.pipe-body h4 { font-size:17px; font-weight:600; margin-bottom:6px; color:var(--text); }
+.pipe-body p  { color:var(--muted); font-size:14px; line-height:1.65; }
+.pipe-body .tag { margin-top:8px; }
+.wakeword-demo {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:32px;
+  backdrop-filter:blur(20px);
+  margin-top:32px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.ww-icon {
+  font-size:48px;
+  width:80px;
+  text-align:center;
+  flex-shrink:0;
+}
+.ww-text h3 { font-size:20px; margin-bottom:8px; }
+.ww-text p  { color:var(--muted); font-size:14px; line-height:1.65; }
+.pulse-ring {
+  display:inline-block;
+  width:12px; height:12px;
+  border-radius:50%;
+  background:var(--blue);
+  box-shadow:0 0 0 0 rgba(14,165,233,.5);
+  animation:pulse 2s infinite;
+  margin-right:8px;
+  vertical-align:middle;
+}
+@keyframes pulse {
+  0%   { box-shadow:0 0 0 0 rgba(14,165,233,.5); }
+  70%  { box-shadow:0 0 0 14px rgba(14,165,233,0); }
+  100% { box-shadow:0 0 0 0 rgba(14,165,233,0); }
+}
+</style>
+</head>
+<body>
+
+<video autoplay loop muted playsinline class="video-bg">
+  <source src="resources/bg.mp4" type="video/mp4">
+</video>
+
+<nav>
+  <a href="index.html" class="logo">LAGMABILLS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="Team.html" class="nav-link">Team</a></li>
+    <li><a href="features.html" class="nav-link">Features</a></li>
+    <li><a href="nova.html" class="nav-link active">Nova</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="download.html" class="cta-button">Download</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="Team.html">Team</a>
+  <a href="features.html">Features</a><a href="nova.html">Nova</a>
+  <a href="contact.html">Contact</a><a href="about.html">About</a>
+  <a href="download.html">Download</a>
+</div>
+
+<div class="page-hero">
+  <div class="section-label">VOICE AI</div>
+  <h1>Meet <span class="gradient-text">Nova</span></h1>
+  <p>A fully local voice assistant running entirely on the robot — no cloud, no internet required. Wake it, command it, hear it respond — all in Italian.</p>
+</div>
+
+<!-- DEMO BOX -->
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="wakeword-demo">
+      <div class="ww-icon">🎤</div>
+      <div class="ww-text">
+        <h3><span class="pulse-ring"></span>"Hey Nova…"</h3>
+        <p>The custom wakeword model (trained on Google Colab via OpenWakeWord) listens 24/7 on the ReSpeaker 2-Mic HAT. Stereo GCC-PHAT estimates the direction of arrival and can orient the robot toward the speaker (±20° deadzone).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">PIPELINE</div>
+    <h2>How Nova <span class="gradient-text">Works</span></h2>
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-num">01</div>
+        <div class="pipe-body">
+          <h4>Wakeword Detection</h4>
+          <p>OpenWakeWord ONNX model (<code>hey_no_va.onnx</code>) runs on CPU via ONNX Runtime. 32ms chunks, 16kHz mono. Threshold 0.7, 3s cooldown to prevent re-triggering. Buffer cleared immediately after detection.</p>
+          <span class="tag">hey_no_va.onnx</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">02</div>
+        <div class="pipe-body">
+          <h4>Audio Streaming</h4>
+          <p>Raw PCM16 audio streamed via WebSocket to external server at <code>100.120.32.86:5000</code>. Pure binary — no headers, no timestamps, no framing metadata. Float32 → int16 LE conversion.</p>
+          <span class="tag">WebSocket · PCM16</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">03</div>
+        <div class="pipe-body">
+          <h4>Whisper STT</h4>
+          <p>faster-whisper (int8 quantized, CPU) transcribes the audio to text. Optimized for Italian. Runs on the external PC to offload the Pi.</p>
+          <span class="tag">faster-whisper · int8</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">04</div>
+        <div class="pipe-body">
+          <h4>LLM via Ollama</h4>
+          <p>Transcribed text sent to Ollama running on the external PC. Model selection flexible — Llama, Mistral, Gemma etc. Response streamed back to Pi.</p>
+          <span class="tag">Ollama · local LLM</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">05</div>
+        <div class="pipe-body">
+          <h4>Piper TTS → Speaker</h4>
+          <p>Response synthesized by Piper TTS with the "Miro" Italian voice (<code>~/AIsburra/piper_voci_italiano/Miro/</code>). Audio played via ReSpeaker output (<code>plughw:CARD=seeed2micvoicec,DEV=0</code>).</p>
+          <span class="tag">Piper TTS · Miro IT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACE -->
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">FACE ANIMATION</div>
+    <h2>Emotional <span class="gradient-text">Expressions</span></h2>
+    <p style="color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:32px">Nova has a Pygame-based face display with 12+ emotional sequences. When the wakeword fires, it switches to SEQ_WAKEWORD (124): a two-phase animation with animated microphone, pulsing sound arcs, and blinking "In ascolto…" text.</p>
+    <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:36px">😊</div>
+        <h3 style="margin-top:8px">Happy</h3>
+        <p>Task completed successfully</p>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:36px">🎤</div>
+        <h3 style="margin-top:8px">Listening</h3>
+        <p>SEQ_WAKEWORD — pulsing arcs</p>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:36px">🤔</div>
+        <h3 style="margin-top:8px">Thinking</h3>
+        <p>Processing command or obstacle</p>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:36px">⚠️</div>
+        <h3 style="margin-top:8px">Alert</h3>
+        <p>Cliff / obstacle / emergency stop</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">LAGMABILLS</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="features.html">Features</a>
+      <a href="download.html">Download</a>
+      <a href="https://github.com/Dragonyx118/LagmaBills" target="_blank">GitHub</a>
+    </div>
+    <p class="footer-copy">© 2025 LagmaBills Project — MIT License</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+</script>
+</body>
+</html>

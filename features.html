@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Features — LagmaBills</title>
+<link rel="icon" type="image/png" href="resources/icons/SogmaLigo/noLogo.png">
+<link rel="stylesheet" href="style.css">
+<style>
+.spec-table { width:100%; border-collapse:collapse; margin-top:32px; }
+.spec-table th { text-align:left; padding:12px 16px; font-family:var(--mono); font-size:11px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; border-bottom:1px solid var(--border); }
+.spec-table td { padding:12px 16px; font-size:14px; border-bottom:1px solid rgba(14,165,233,.06); }
+.spec-table td:first-child { font-family:var(--mono); font-size:13px; color:var(--blue); }
+.spec-table tr:hover td { background:rgba(14,165,233,.04); }
+.arch-box { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:32px; margin-top:32px; backdrop-filter:blur(20px); }
+.arch-row { display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid var(--border); }
+.arch-row:last-child { border:none; }
+.arch-icon { width:44px; height:44px; border-radius:10px; background:rgba(14,165,233,.12); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.arch-label { font-family:var(--mono); font-size:13px; color:var(--blue); min-width:160px; }
+.arch-desc { color:var(--muted); font-size:14px; line-height:1.5; }
+.arch-tag { margin-left:auto; flex-shrink:0; }
+</style>
+<script src="cursor.js" defer></script>
+</head>
+<body>
+
+<video autoplay loop muted playsinline class="video-bg">
+  <source src="resources/bg.mp4" type="video/mp4">
+</video>
+
+<nav>
+  <a href="index.html" class="logo">LAGMABILLS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="Team.html" class="nav-link">Team</a></li>
+    <li><a href="features.html" class="nav-link active">Features</a></li>
+    <li><a href="nova.html" class="nav-link">Nova</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="download.html" class="cta-button">Download</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="Team.html">Team</a>
+  <a href="features.html">Features</a><a href="nova.html">Nova</a>
+  <a href="contact.html">Contact</a><a href="about.html">About</a>
+  <a href="download.html">Download</a>
+</div>
+
+<div class="page-hero">
+  <div class="section-label">SYSTEM OVERVIEW</div>
+  <h1>Every Subsystem.<br><span class="gradient-text">Explained.</span></h1>
+  <p>A distributed real-time architecture with no cloud dependency — built for reliability in environments where connectivity cannot be assumed.</p>
+</div>
+
+<!-- ARCHITECTURE -->
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">HARDWARE STACK</div>
+    <h2>System <span class="gradient-text">Architecture</span></h2>
+    <div class="arch-box">
+      <div class="arch-row">
+        <div class="arch-icon">🧠</div>
+        <span class="arch-label">Raspberry Pi 4B</span>
+        <span class="arch-desc">Central orchestrator. Runs all Python modules (wakeword, odometry, mapping, viewer). I²C master to both ESP32s. MQTT broker via Mosquitto.</span>
+        <span class="arch-tag"><span class="tag">4GB RAM</span></span>
+      </div>
+      <div class="arch-row">
+        <div class="arch-icon">⚙️</div>
+        <span class="arch-label">ESP32 PCBmotori</span>
+        <span class="arch-desc">I²C slave 0x08. Controls 4× JGA25-370 motors via TB6612FNG drivers. Quadrature encoder feedback. 28-byte TX buffer to Pi at 10Hz.</span>
+        <span class="arch-tag"><span class="tag">I²C 0x08</span></span>
+      </div>
+      <div class="arch-row">
+        <div class="arch-icon">📡</div>
+        <span class="arch-label">ESP32 PCBsens</span>
+        <span class="arch-desc">I²C slave 0x09. Manages 6× HC-SR04, MPU-6050 IMU, TCRT5000 line sensors, PCA9685 arm servos, relay/pump.</span>
+        <span class="arch-tag"><span class="tag">I²C 0x09</span></span>
+      </div>
+      <div class="arch-row">
+        <div class="arch-icon">🚁</div>
+        <span class="arch-label">ESP-Drone</span>
+        <span class="arch-desc">CRTP/UDP at 192.168.43.42:2390 over dedicated wlan1. Watchdog auto-landing after 8s without commands.</span>
+        <span class="arch-tag"><span class="tag">UDP CRTP</span></span>
+      </div>
+      <div class="arch-row">
+        <div class="arch-icon">🎤</div>
+        <span class="arch-label">ReSpeaker 2-Mic HAT</span>
+        <span class="arch-desc">WM8960 codec at I²C 0x1A. Stereo 48kHz/S16_LE. GCC-PHAT DOA estimation for voice direction. seeed-voicecard DKMS on kernel 6.12.</span>
+        <span class="arch-tag"><span class="tag">WM8960</span></span>
+      </div>
+      <div class="arch-row">
+        <div class="arch-icon">🔋</div>
+        <span class="arch-label">Power System</span>
+        <span class="arch-desc">3S LiPo 5500mAh. 12V motors, 5V logic via XL4015, 3.3V via LM2596. Schottky diodes for bench/battery hot-swap. PCBalim 2-layer.</span>
+        <span class="arch-tag"><span class="tag">3S LiPo</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMS -->
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">COMMUNICATION</div>
+    <h2>Real-time <span class="gradient-text">Data Flow</span></h2>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>I²C Bus</h3>
+        <p>High-frequency local data: Pi polls both ESP32s at 10Hz. Wire0 (GPIO 21/22) as slave toward Pi; Wire1 (GPIO 32/33) as master toward PCA9685/MPU-6050.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📨</div>
+        <h3>MQTT (Mosquitto)</h3>
+        <p>Event-driven high-level messaging on localhost:1883. Topics: robot/motori/cmd, robot/sensori/distanze, robot/odometria, robot/nav/goal, drone/cmd/rpyt and more.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>WebSocket</h3>
+        <p>Audio streaming to Whisper server (pure binary PCM16, no framing). Web dashboard map viewer on ws://pi:8765. Occupancy grid pushed at 1Hz.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Tailscale VPN</h3>
+        <p>Remote access to Pi at 100.100.61.49 without port forwarding. Transparent to MQTT — ESP32s communicate on local WiFi only.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SENSORS SPEC TABLE -->
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">SENSORS</div>
+    <h2>Hardware <span class="gradient-text">Specifications</span></h2>
+    <table class="spec-table">
+      <tr><th>Component</th><th>Role</th><th>Interface</th><th>Notes</th></tr>
+      <tr><td>HC-SR04 ×6</td><td>Obstacle + cliff detection</td><td>GPIO (TRIG/ECHO)</td><td>ECHO 5V → 10k+20k divider to ESP32</td></tr>
+      <tr><td>MPU-6050</td><td>6-axis IMU (acc + gyro)</td><td>I²C Wire1</td><td>10ms update, auto calibration on boot</td></tr>
+      <tr><td>TCRT5000 ×3</td><td>Line following / cliff</td><td>GPIO digital</td><td>SX, CENTRO, DX — mask byte in I²C buf</td></tr>
+      <tr><td>NEO-6M GPS</td><td>World-frame positioning</td><td>/dev/ttyS0 9600bd</td><td>GGA+RMC fusion, Leaflet.js live track</td></tr>
+      <tr><td>OV5647 CSI</td><td>MJPEG camera stream</td><td>CSI ribbon</td><td>rpicam-vid → Flask MJPEG on :8080</td></tr>
+      <tr><td>PCA9685</td><td>6× servo PWM driver</td><td>I²C Wire1 0x40</td><td>50Hz, 27MHz oscillator, SERVO_MIN=150</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PCB -->
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">PCB DESIGN</div>
+    <h2>Custom <span class="gradient-text">KiCad PCBs</span></h2>
+    <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div class="card">
+        <div class="card-icon">🟦</div>
+        <h3>PCBmotori</h3>
+        <p>4-layer. TB6612FNG ×2, encoder headers, 10kΩ pull-downs on GPIO 2 &amp; 12. 1.5mm traces for motor outputs, 2.0mm for 12V rail.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🟩</div>
+        <h3>PCBsens</h3>
+        <p>2-layer. All sensor headers, relay driver, TCRT connectors. Wire1 for PCA9685 + MPU-6050. Voltage dividers for HC-SR04 ECHO lines.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🟧</div>
+        <h3>PCBalim</h3>
+        <p>2-layer power distribution. XL4015 (12V→5V), LM2596 (5V→3.3V). Schottky OR diodes for seamless bench/battery switching.</p>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:13px;margin-top:20px">All boards manufactured by JLCPCB. THT-only assembly. Trace standards: 0.3mm signal / 0.5mm 3.3V / 1.0mm 5V / 1.5mm motor / 2.0mm 12V. Copper pour on high-current rails.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">LAGMABILLS</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="nova.html">Nova AI</a>
+      <a href="download.html">Download</a>
+      <a href="https://github.com/Dragonyx118/LagmaBills" target="_blank">GitHub</a>
+    </div>
+    <p class="footer-copy">© 2025 LagmaBills Project — MIT License</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+</script>
+</body>
+</html>

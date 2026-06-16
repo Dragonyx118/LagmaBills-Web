@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team — LagmaBills</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="resources/icons/SogmaLigo/noLogo.png">
+<script src="cursor.js" defer></script>
+<style>
+.team-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  margin-top:48px;
+}
+.team-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:36px 28px;
+  text-align:center;
+  backdrop-filter:blur(20px);
+  transition:transform .3s, border-color .3s, box-shadow .3s;
+}
+.team-card:hover {
+  transform:translateY(-6px);
+  border-color:rgba(14,165,233,.4);
+  box-shadow:0 20px 50px rgba(14,165,233,.1);
+}
+.avatar {
+  width:80px; height:80px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--accent2));
+  display:flex; align-items:center; justify-content:center;
+  font-size:32px;
+  margin:0 auto 20px;
+  border:2px solid rgba(14,165,233,.3);
+}
+.team-card h3 { font-size:20px; font-weight:700; margin-bottom:4px; }
+.team-role {
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--blue);
+  text-transform:uppercase;
+  margin-bottom:16px;
+  display:block;
+}
+.team-card p { color:var(--muted); font-size:14px; line-height:1.65; margin-bottom:16px; }
+.team-tags { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
+.contrib-box {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-left:4px solid var(--blue);
+  border-radius:0 12px 12px 0;
+  padding:24px 28px;
+  backdrop-filter:blur(20px);
+  margin-top:48px;
+}
+.contrib-box h3 { font-size:18px; margin-bottom:12px; }
+.contrib-box p  { color:var(--muted); font-size:14px; line-height:1.7; }
+</style>
+</head>
+<body>
+
+<video autoplay loop muted playsinline class="video-bg">
+  <source src="resources/bg.mp4" type="video/mp4">
+</video>
+
+<nav>
+  <a href="index.html" class="logo">LAGMABILLS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="Team.html" class="nav-link active">Team</a></li>
+    <li><a href="features.html" class="nav-link">Features</a></li>
+    <li><a href="nova.html" class="nav-link">Nova</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="download.html" class="cta-button">Download</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="Team.html">Team</a>
+  <a href="features.html">Features</a><a href="nova.html">Nova</a>
+  <a href="contact.html">Contact</a><a href="about.html">About</a>
+  <a href="download.html">Download</a>
+</div>
+
+<div class="page-hero">
+  <div class="section-label">THE PEOPLE</div>
+  <h1>Who Built <span class="gradient-text">LagmaBills</span></h1>
+  <p>A student project born in an Italian high school computer science lab — with a lot of late nights and a healthy amount of solder smoke.</p>
+</div>
+
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="avatar"></div>
+        <h3>Daniele Cerioli</h3>
+        <span class="team-role">Lead Developer</span>
+        <p></p>
+        <div class="team-tags">
+          <span class="tag">Python</span>
+          <span class="tag">C++/Arduino</span>
+          <span class="tag">C# MAUI</span>
+          <span class="tag">KiCad</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar"></div>
+        <h3>Simone Panelli</h3>
+        <span class="team-role">Father of Nova</span>
+        <p>s</p>
+        <div class="team-tags">
+          <span class="tag">GAY WAY</span>
+          <span class="tag">AI</span>
+          <span class="tag">AI = ARTIFICIAL INTELLIGENCE</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar"></div>
+        <h3>Andrei Corduneanu</h3>
+        <span class="team-role">DoomScroller</span>
+        <p>s</p>
+        <div class="team-tags">
+          <span class="tag">TIKTOK</span>
+          <span class="tag">YOUTUBE SHORTS</span>
+          <span class="tag">BRAINROT</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="contrib-box">
+      <h3>Open to Contributions</h3>
+      <p>LagmaBills is fully open source. Whether you want to add a new sensor driver, improve the occupancy grid algorithm, train a better wakeword model, or port the MAUI app to iOS — pull requests are welcome. Check the GitHub repository for open issues and the roadmap.</p>
+      <a href="https://github.com/Dragonyx118/LagmaBills" target="_blank" class="btn-primary" style="display:inline-block;margin-top:20px;font-size:14px">Contribute on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">LAGMABILLS</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="features.html">Features</a>
+      <a href="download.html">Download</a>
+      <a href="https://github.com/Dragonyx118/LagmaBills" target="_blank">GitHub</a>
+    </div>
+    <p class="footer-copy">© 2025 LagmaBills Project — MIT License</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+</script>
+</body>
+</html>
