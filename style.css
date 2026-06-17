@@ -1116,3 +1116,63 @@ footer {
     .hero-actions { flex-direction: column; align-items: center; }
     .cta-button-hero, .ghost-button { width: 100%; text-align: center; }
 }
+
+/* Configurazione dell'header contenitore */
+.video-header {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Copre l'intera altezza dello schermo, modificabile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Nasconde le parti di video in eccesso */
+}
+
+/* Stili per il video di sfondo */
+/* =====================
+   VIDEO BACKGROUND
+   ===================== */
+.video-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;       /* Forzatura larghezza schermo intero */
+    height: 100vh;      /* Forzatura altezza schermo intero */
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;  /* Taglia i bordi neri e riempie lo spazio */
+    transform: translate(-50%, -50%); /* Centra perfettamente il video */
+    z-index: -1;        /* Lo sbatte dietro a tutto il sito */
+    pointer-events: none;
+}
+
+/* =====================
+   VIDEO SFONDO PAGINA INTERA
+   ===================== */
+.video-fullpage {
+    position: fixed;    /* Blocca il video sullo sfondo anche se fai scroll */
+    top: 50%;
+    left: 50%;
+    width: 100vw;       /* Forza la larghezza al 100% dello schermo visibile */
+    height: 100vh;      /* Forza l'altezza al 100% dello schermo visibile */
+    min-width: 100%;    /* Impedisce al video di diventare più piccolo del display */
+    min-height: 100%;   /* Impedisce al video di diventare più piccolo del display */
+    object-fit: cover;  /* Ingrandisce e ritaglia il video per non farlo deformare */
+    transform: translate(-50%, -50%); /* Lo centra perfettamente */
+    z-index: -1;        /* Lo posiziona dietro a testi, navbar e contenuti */
+    pointer-events: none; /* Impedisce all'utente di cliccare sul video (tasto destro, pausa, ecc.) */
+}
+
+.audio-control-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001; /* Sopra al video di sfondo */
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

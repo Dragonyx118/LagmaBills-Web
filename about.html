@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="resources/icons/SogmaLigo/noLogo.png">
 <script src="cursor.js" defer></script>
+<video autoplay loop muted playsinline class="video-fullpage">
+  <source src="resources/videos/tonyStank.mp4" type="video/mp4">
+  Il tuo browser non supporta i video HTML5.
+</video>
+<button id="audioBtn" class="audio-control-btn">🔊 Attiva Audio</button>
 </head>
 <body>
 
@@ -109,6 +114,22 @@
 <script>
 document.getElementById('hamburger').addEventListener('click', () =>
   document.getElementById('mobileMenu').classList.toggle('open'));
+</script>
+<script>
+  const btn = document.getElementById('audioBtn'); 
+const video = document.querySelector('.video-fullpage'); // o l'ID del tuo video
+
+video.muted = true; // Forza il muto iniziale per l'autoplay
+
+btn.addEventListener('click', () => {
+    if (video.muted) {
+        video.muted = false;
+        btn.innerText = "🔇 Disattiva Audio";
+    } else {
+        video.muted = true;
+        btn.innerText = "🔊 Attiva Audio";
+    }
+});
 </script>
 </body>
 </html>
