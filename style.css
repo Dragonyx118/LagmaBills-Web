@@ -19,6 +19,16 @@
     --text:           #0f172a; /* Slate scuro per un contrasto migliore sul blu */
     --text-muted:     rgba(15,23,42,0.6);
     --text-light:     rgba(15,23,42,0.45);
+
+    /* Alias di compatibilita: alcune pagine (team/nova/features) usano ancora
+       questi nomi "vecchi". Tenerli qui evita di doverle riscrivere e mantiene
+       tutto sincronizzato con la palette sopra. */
+    --blue:    var(--teal);
+    --accent2: var(--green-light);
+    --card:    var(--glass);
+    --border:  var(--glass-border);
+    --muted:   var(--text-muted);
+    --mono:    'JetBrains Mono', 'SF Mono', Consolas, monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
@@ -306,6 +316,31 @@ nav:hover { background: rgba(255,255,255,0.75); }
     text-transform: uppercase;
 }
 
+
+/* =====================
+   VIDEO BG (bare <video class="video-bg"> used directly in pages)
+   ===================== */
+.video-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
 /* =====================
    HOME PAGE
    ===================== */
@@ -338,7 +373,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
     z-index: 1;
 }
 
-#canvas { width: 100%; height: 100%; }
+#canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
 
 .hero-content {
     position: relative;
@@ -393,7 +428,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
     margin-top: 8px;
 }
 
-.cta-button-hero {
+.cta-button-hero, .btn-primary {
     background: linear-gradient(135deg, var(--teal-light), var(--green-light));
     color: #fff;
     padding: 14px 32px;
@@ -405,12 +440,12 @@ nav:hover { background: rgba(255,255,255,0.75); }
     box-shadow: 0 4px 20px rgba(58,134,255,0.3);
 }
 
-.cta-button-hero:hover {
+.cta-button-hero:hover, .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(58,134,255,0.4);
 }
 
-.ghost-button {
+.ghost-button, .btn-ghost {
     color: var(--text-muted);
     padding: 14px 32px;
     border-radius: 50px;
@@ -423,7 +458,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
     transition: border-color 0.3s, color 0.3s, background 0.3s;
 }
 
-.ghost-button:hover {
+.ghost-button:hover, .btn-ghost:hover {
     border-color: rgba(58,134,255,0.5);
     color: var(--teal);
     background: rgba(255,255,255,0.7);
@@ -492,8 +527,10 @@ nav:hover { background: rgba(255,255,255,0.75); }
 }
 
 .features-container { max-width: 1200px; width: 100%; }
+.section-inner { max-width: 1200px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
 
-.features-grid {
+
+.features-grid, .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
@@ -501,7 +538,7 @@ nav:hover { background: rgba(255,255,255,0.75); }
 }
 
 /* Card frosted bianca */
-.feature-card {
+.feature-card, .card {
     background: rgba(255,255,255,0.60);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
@@ -516,15 +553,15 @@ nav:hover { background: rgba(255,255,255,0.75); }
     box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 1px 0 #fff inset;
 }
 
-.feature-card:hover {
+.feature-card:hover, .card:hover {
     transform: translateY(-8px);
     background: rgba(255,255,255,0.82);
     box-shadow: 0 20px 50px rgba(58,134,255,0.15), 0 1px 0 #fff inset;
 }
 
-.feature-icon { font-size: 36px; }
+.feature-icon, .card-icon { font-size: 36px; }
 
-.feature-card h3 {
+.feature-card h3, .card h3 {
     font-size: 20px;
     font-weight: 600;
     background: linear-gradient(135deg, var(--teal), var(--green));
@@ -533,16 +570,16 @@ nav:hover { background: rgba(255,255,255,0.75); }
     background-clip: text;
 }
 
-.feature-card p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+.feature-card p, .card p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
 
-.feature-link {
+.feature-link, .card-link {
     color: var(--teal);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
     transition: opacity 0.2s;
 }
-.feature-link:hover { opacity: 0.7; }
+.feature-link:hover, .card-link:hover { opacity: 0.7; }
 
 /* CTA */
 .cta-section {

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download — LagmaBills</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="resources/icons/SogmaLigo/noLogo.png">
+<script src="cursor.js" defer></script>
+</head>
+<body>
+
+<video autoplay loop muted playsinline class="video-bg">
+  <source src="resources/bg.mp4" type="video/mp4">
+</video>
+
+<nav>
+  <a href="index.html" class="logo">LAGMABILLS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="team.html" class="nav-link">Team</a></li>
+    <li><a href="features.html" class="nav-link">Features</a></li>
+    <li><a href="nova.html" class="nav-link">Nova</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="download.html" class="cta-button">Download</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="team.html">Team</a>
+  <a href="features.html">Features</a><a href="nova.html">Nova</a>
+  <a href="contact.html">Contact</a><a href="about.html">About</a>
+  <a href="download.html">Download</a>
+</div>
+
+<div class="page-hero">
+  <div class="section-label">GET THE APP</div>
+  <h1>Take <span class="gradient-text">Control</span></h1>
+  <p>LagmaIpp is the cross-platform .NET MAUI app that drives the robot: dual joysticks, arm sliders, drone control and live camera stream over Tailscale.</p>
+</div>
+
+<section class="download-version-section">
+  <div class="version-badge">
+    <span class="version-dot"></span>
+    <span>LagmaIpp — actively developed, open source</span>
+  </div>
+</section>
+
+<section class="download-buttons-section">
+  <div class="download-cards">
+
+    <div class="download-card download-card--available">
+      <div class="download-card-icon">🪟</div>
+      <h3>Windows</h3>
+      <p>.NET MAUI desktop build. Connects to the robot over Tailscale or your local network.</p>
+      <span class="download-card-size">Build from source · .exe coming soon</span>
+      <a href="https://github.com/Dragonyx118/LagmaIpp" target="_blank" class="download-btn">⬇ Get it on GitHub</a>
+      <span class="download-card-note">No signed installer yet — clone the repo and build with Visual Studio / <code>dotnet build</code>.</span>
+    </div>
+
+    <div class="download-card download-card--available">
+      <div class="download-card-icon">🤖</div>
+      <h3>Android</h3>
+      <p>Same app, same controls — built for tablets and phones with the .NET MAUI Android target.</p>
+      <span class="download-card-size">Build from source · .apk coming soon</span>
+      <a href="https://github.com/Dragonyx118/LagmaIpp" target="_blank" class="download-btn">⬇ Get it on GitHub</a>
+      <span class="download-card-note">Check the repo's Releases tab for a packaged APK once one is published.</span>
+    </div>
+
+    <div class="download-card download-card--unavailable">
+      <div class="download-card-icon">🍏</div>
+      <h3>iOS</h3>
+      <p>Technically possible with .NET MAUI — just needs an Apple developer account we don't have yet.</p>
+      <span class="download-card-size">Not available</span>
+      <a class="download-btn disabled">Unavailable</a>
+      <span class="download-card-note">If you want to help port/sign a build, open an issue on GitHub.</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="requirements-section">
+  <div class="requirements-inner">
+    <h3>What you'll need</h3>
+    <div class="requirements-grid">
+      <div class="req-item"><span class="req-icon">📡</span> Same network as the robot, or a Tailscale connection</div>
+      <div class="req-item"><span class="req-icon">🔌</span> Raspberry Pi 4B running the LagmaBills services</div>
+      <div class="req-item"><span class="req-icon">🎮</span> A gamepad/Bluetooth controller (optional, but recommended)</div>
+      <div class="req-item"><span class="req-icon">🛠️</span> .NET 8 SDK if you're building from source</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Want to build<br><span class="gradient-text">the robot itself?</span></h2>
+    <p>Firmware, PCB schematics and the full hardware writeup are on GitHub too.</p>
+    <a href="https://github.com/Dragonyx118/LagmaBills" class="btn-primary" target="_blank">View Hardware Repo</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">LAGMABILLS</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="team.html">Team</a>
+      <a href="features.html">Features</a>
+      <a href="nova.html">Nova AI</a>
+      <a href="about.html">About</a>
+      <a href="download.html">Download</a>
+      <a href="https://github.com/Dragonyx118/LagmaBills" target="_blank">GitHub</a>
+      <a href="https://github.com/Dragonyx118/LagmaBills-Web" target="_blank">Site GitHub</a>
+    </div>
+    <p class="footer-copy">© 2025 LagmaBills Project — Open Source — MIT License</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+</script>
+</body>
+</html>

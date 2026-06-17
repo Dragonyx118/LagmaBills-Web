@@ -35,7 +35,7 @@
     animateRing();
 
     // Hover su elementi interattivi
-    const hoverTargets = 'a, button, input, textarea, select, label, [role="button"], .feature-card, .team-card, .download-card, .contact-info-card, .stat-item';
+    const hoverTargets = 'a, button, input, textarea, select, label, [role="button"], .feature-card, .card, .team-card, .download-card, .contact-info-card, .stat-item';
 
     document.addEventListener('mouseover', (e) => {
         if (e.target.closest(hoverTargets)) {

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — LagmaBills</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="resources/icons/SogmaLigo/noLogo.png">
+<script src="cursor.js" defer></script>
+</head>
+<body>
+
+<video autoplay loop muted playsinline class="video-bg">
+  <source src="resources/bg.mp4" type="video/mp4">
+</video>
+
+<nav>
+  <a href="index.html" class="logo">LAGMABILLS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="team.html" class="nav-link">Team</a></li>
+    <li><a href="features.html" class="nav-link">Features</a></li>
+    <li><a href="nova.html" class="nav-link">Nova</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <li><a href="about.html" class="nav-link active">About</a></li>
+    <li><a href="download.html" class="cta-button">Download</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="team.html">Team</a>
+  <a href="features.html">Features</a><a href="nova.html">Nova</a>
+  <a href="contact.html">Contact</a><a href="about.html">About</a>
+  <a href="download.html">Download</a>
+</div>
+
+<div class="page-hero">
+  <div class="section-label">THE PROJECT</div>
+  <h1>Why We Built <span class="gradient-text">LagmaBills</span></h1>
+  <p>A school project that turned into a real rescue robot — built for Arduino Day 2025 with civil protection in mind.</p>
+</div>
+
+<section class="content-section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">THE IDEA</div>
+    <h2>One Robot,<br><span class="gradient-text">Three Ways to Help</span></h2>
+    <p style="color:var(--text-muted);font-size:16px;max-width:700px;line-height:1.7;margin-bottom:0">LagmaBills started as a class project at IIS Galileo Galilei in Crema, built around a simple question: in an emergency, what does a small team of first responders actually need eyes and hands for? The answer became three linked agents in one platform — a ground rover that can reach a debris field, a robotic arm that can move what people shouldn't have to, and a drone that can see what the rover can't. "Land, Ground & Midair Agent" isn't just a tagline, it's the literal division of labour.</p>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Students, One Project</div></div>
+    <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">ESP32 Subsystems</div></div>
+    <div class="stat-item"><div class="stat-number">100<span>%</span></div><div class="stat-label">Local Processing</div></div>
+    <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">Cloud Dependencies</div></div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="section-inner">
+    <div class="section-label">DESIGN PRINCIPLE</div>
+    <h2>Built to Work<br><span class="gradient-text">Without the Internet</span></h2>
+    <p style="color:var(--text-muted);font-size:16px;max-width:700px;line-height:1.7;margin-bottom:40px">Real emergency scenes don't come with reliable WiFi. That's why every brain LagmaBills needs — navigation, voice AI, mapping — runs locally on the Raspberry Pi and the two onboard ESP32s. The only thing that ever leaves the robot is a Tailscale link back to the operator, and even that's optional: the robot can navigate and avoid obstacles entirely on its own.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>School Project</h3>
+        <p>Built as coursework at IIS Galileo Galilei, Crema — combining networking, programming and electronics curricula into one working machine.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚒</div>
+        <h3>Civil Protection</h3>
+        <p>Designed with real rescue scenarios in mind: debris removal, area surveillance and remote inspection where sending a person first isn't safe.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔓</div>
+        <h3>Fully Open Source</h3>
+        <p>Firmware, PCB schematics and the control app are all public on GitHub under the MIT License — fork it, build it, improve it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Curious How<br><span class="gradient-text">It All Fits Together?</span></h2>
+    <p>See every subsystem in detail, meet the team behind it, or just go grab the app.</p>
+    <a href="features.html" class="btn-primary">Explore Features</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">LAGMABILLS</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="team.html">Team</a>
+      <a href="features.html">Features</a>
+      <a href="nova.html">Nova AI</a>
+      <a href="about.html">About</a>
+      <a href="download.html">Download</a>
+      <a href="https://github.com/Dragonyx118/LagmaBills" target="_blank">GitHub</a>
+      <a href="https://github.com/Dragonyx118/LagmaBills-Web" target="_blank">Site GitHub</a>
+    </div>
+    <p class="footer-copy">© 2025 LagmaBills Project — Open Source — MIT License</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+</script>
+</body>
+</html>
